@@ -32,7 +32,10 @@
 \newcommand{\probP}{\mathrm{P}}
 \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
-\newcommand{\exe}[1]{\textbf{#1}\mbox{} \\}
+
+\setcounter{section}{1}
+\setcounter{secnumdepth}{5}
+\newcommand{\exe}[1]{\subsubsection*{#1}\addcontentsline{toc}{subsubsection}{#1}}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -43,8 +46,8 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 
-\section*{Introduction}
 It has been a while since I have done any formal mathematics, so take these solutions with a large heaping of salt. If there is intuition to be developed in a problem, I try to develop it before diving in.
 
 \subfile{chapters/ch2}
