@@ -1,0 +1,74 @@
+\section*{Chapter 2: The natural numbers}
+The natural numbers satisfy the Peano axioms:
+
+\begin{axiom}
+  $0$ is a natural number.
+\end{axiom}
+\begin{axiom}
+  If $n$ is a natural number, then $n\inc$ is also a natural number.
+\end{axiom}
+\begin{axiom}
+  $0$ is not the successor of any natural number; i.e. we have $n\inc \neq 0$ for every natural number $n$.
+\end{axiom}
+\begin{axiom}
+  Different natural numbers must have different successors; i.e., if $n$ and $m$ are natural numbers, and $n \neq m$, then $n\inc \neq m\inc$.
+\end{axiom}
+\begin{axiom}
+  Principle of mathematical induction). Let $P(n)$ be
+any property pertaining to a natural number n. Suppose that $P(0)$
+is true, and suppose that whenever $P(n)$ is true, $P(n\inc)$ is also
+true. Then $P(n)$ is true for every natural number n.
+\end{axiom}
+
+\subsection*{Addition}
+For reference, addition is defined inductively as $0 + m = m$ and $(n\inc) + m = (n + m)\inc$.
+
+\exe{2.2.1. (Addition is associative)}
+We can use induction on $a$ to prove $a + (b + c) = (a + b) + c$.
+
+The base case is
+\begin{align*}
+  0 + (b + c) &= (b + c) &\text{(by the definition of addition)}\\
+              &= b + c  & \\
+              &= (0 + b) + c &\text{(again using the definition)}
+\end{align*}
+Now we assume the statement holds for $a$, and we seek to prove it for $a\inc$.
+\begin{align*}
+  (a\inc) + (b+c) &= (a + (b+c))\inc &\text{(definition)}\\
+                &= ((a + b) + c)\inc &\text{(inductive step)}\\
+                &= (a+b)\inc + c &\text{(definition)}\\
+                &= ((a\inc) + b) + c &\text{(definition)}
+\end{align*}
+
+\exe{2.2.2. (Positive numbers have only one successor)}
+We will prove this by induction on $a$. The base case is $a = 1$ as the first positive number, and since $0\inc = 1$, the base case is proved.
+
+For the inductive step, assume the statement holds for $a$, that is that there exists exactly one $b$ such that $b\inc = a$. If we increment both sides, then $(b\inc)\inc = a\inc$. By the inductive step, we know $b\inc = a$ and from the problem statement, we know that $a$ is positive which completes the proof.
+
+\exe{2.2.3. (Basic properties of natural numbers)}
+I will prove transitivity and the final two.
+
+\textbf{a)} To prove transitivity, we can expand the $\geq$ definitions as $a \geq b \implies a = b + n$ for some natural number $n$, and $b \geq c \implies b = c + m$ for some natural number $m$. Thus
+\begin{align*}
+  a &= b + n &\\
+    &= (c + m) + n &\text{(expand)}\\
+    &= c + (m + n) &\text{(by associativity)}
+\end{align*}
+Since $m + n$ is a natural number, by definition of $\geq$, we have $a \geq c$.
+
+\textbf{b)} We want to prove that $a < b$ if and only if $a\inc \leq b$. 
+
+$(\Leftarrow)$ If $a\inc \leq b$, then $b = (a\inc) + n$ for some natural number $n$. By definition of addition, $b = (a + n)\inc$. By commutativity, $b = a + (n\inc)$. Since $n\inc$ is a positive number, we have that $b \geq a$ and $b\neq a$\footnote{Otherwise we get a contradiction that $n\inc = 0$ by cancellation.} which shows $b > a$.
+
+$(\Rightarrow)$ If $a\leq b$, then $b = a + n$, and $b\neq a$. This means that $n\neq 0$, and by the previous exercise, we know that $n = m\inc$ for some natural number $m$. Replacing in the equation for $b$, we have 
+\begin{align*}
+  b &= a + (m\inc) &\\
+    &= (m\inc) + a &\text{(commutativity)}\\
+    &= (a + m)\inc &\text{(addition and commutativity)}\\
+    &= (a\inc) + m &\text{addition}
+\end{align*}
+hence $b \geq a\inc$ by definition of $\geq$.
+
+\textbf{c)} We want to show that $a < b$ if and only if $b = a + d$ for some positive number $d$.
+
+The proof for this is part of the proof for \textbf{b)}, although the forward direction can be shown more easily by contradiction.
